@@ -65,8 +65,4 @@ public class DbController {
         System.out.println("执行成功");
         return new ArrayList<>();
     }
-
-    public static void main(String[] args) {
-
-    }
 }

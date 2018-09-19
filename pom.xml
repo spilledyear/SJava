@@ -67,6 +67,17 @@
             <version>1.8.9</version>
         </dependency>
 
+        <dependency>
+            <groupId>cglib</groupId>
+            <artifactId>cglib</artifactId>
+            <version>3.2.5</version>
+        </dependency>
+        <dependency>
+            <groupId>asm</groupId>
+            <artifactId>asm</artifactId>
+            <version>3.2</version>
+        </dependency>
+
 
         <!-- redis客户端 -->
         <dependency>
@@ -96,43 +107,62 @@
 
 
     <build>
+        <sourceDirectory>src/main/java</sourceDirectory>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
+                    <debug>false</debug>
                     <source>1.8</source>
                     <target>1.8</target>
                     <encoding>UTF-8</encoding>
                 </configuration>
             </plugin>
 
-            <!-- 相比于标准的webapp目录结构，这个项目少了一层，即：main目录，所以web.xml文件位置需要单独配置 -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-war-plugin</artifactId>
-                <version>2.2</version>
-                <configuration>
-                    <webXml>src\webapp\WEB-INF\web.xml</webXml>
-                </configuration>
-            </plugin>
+            <!-- 如果不是标准的webapp目录结构，比如少了一层main目录，则需要单独配置 -->
+            <!--<plugin>-->
+                <!--<groupId>org.apache.maven.plugins</groupId>-->
+                <!--<artifactId>maven-war-plugin</artifactId>-->
+                <!--<version>2.6</version>-->
+                <!--<configuration>-->
+                    <!--<webXml>src\webapp\WEB-INF\web.xml</webXml>-->
+                    <!--<attachClasses>true</attachClasses>-->
+                    <!--<webResources>-->
+                        <!--<resource>-->
+                            <!--<directory>src/resources</directory>-->
+                            <!--<targetPath>WEB-INF/classes</targetPath>-->
+                        <!--</resource>-->
+                        <!--<resource>-->
+                            <!--<directory>src/webapp</directory>-->
+                            <!--<targetPath>/</targetPath>-->
+                        <!--</resource>-->
+                        <!--<resource>-->
+                            <!--<directory>src/webapp/static</directory>-->
+                            <!--<targetPath>static</targetPath>-->
+                        <!--</resource>-->
+                        <!--<resource>-->
+                            <!--<directory>src/webapp/WEB-INF</directory>-->
+                            <!--<targetPath>WEB-INF</targetPath>-->
+                        <!--</resource>-->
+                    <!--</webResources>-->
+                <!--</configuration>-->
+            <!--</plugin>-->
 
-
-            <!-- maven tomcat插件用 -->
+            <!-- maven tomcat插件用，使用：mvn tomcat7:run -->
             <plugin>
                 <groupId>org.apache.tomcat.maven</groupId>
                 <artifactId>tomcat7-maven-plugin</artifactId>
                 <version>2.2</version>
                 <configuration>
                     <port>8080</port>
-                    <path>/spring</path>
+                    <path>/</path>
                     <uriEncoding>UTF-8</uriEncoding>
                     <server>TomcatServer</server>
                     <username>tiger</username>
                     <password>tiger</password>
                 </configuration>
             </plugin>
-
 
         </plugins>
     </build>
