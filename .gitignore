@@ -1,0 +1,22 @@
+# Eclipse
+.classpath
+.project
+.settings/
+
+# Intellij
+.idea/
+*.iml
+*.iws
+**/out
+/overlays/
+/core/overlays/
+
+# Maven
+**/log/
+**/target
+**/classes
+**/*.log
+**/tmp
+**/.tmp
+**/bin/**
+**/logs/
