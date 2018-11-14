@@ -10,7 +10,7 @@
     <version>1.0</version>
 
     <properties>
-        <spring.version>4.3.11.RELEASE</spring.version>
+        <spring.version>4.3.19.RELEASE</spring.version>
         <jedis.version>2.9.0</jedis.version>
     </properties>
 
@@ -103,6 +103,24 @@
             <artifactId>curator-recipes</artifactId>
             <version>4.0.0</version>
         </dependency>
+
+        <!-- netty -->
+        <!-- https://mvnrepository.com/artifact/io.netty/netty-all -->
+        <dependency>
+            <groupId>io.netty</groupId>
+            <artifactId>netty-all</artifactId>
+            <version>5.0.0.Alpha1</version>
+        </dependency>
+
+        <!-- lombok -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.4</version>
+            <scope>provided</scope>
+        </dependency>
+
+
     </dependencies>
 
 

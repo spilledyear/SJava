@@ -35,10 +35,8 @@ public class ConstructorReference {
         System.out.println(a3);
     }
 
-    public static List<Apple> map(List<Integer> list,
-                                  Function<Integer, Apple> f) {
+    public static List<Apple> map(List<Integer> list, Function<Integer, Apple> f) {
         List<Apple> result = new ArrayList<>();
-        //TODO
         for (Integer e : list) {
             result.add(f.apply(e));
         }
