@@ -7,6 +7,8 @@ import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
+import io.netty.handler.codec.LineBasedFrameDecoder;
+import io.netty.handler.codec.string.StringDecoder;
 import lombok.extern.slf4j.Slf4j;
 
 
@@ -40,7 +42,8 @@ public class TimeServer {
         int port = 9090;
         try {
             new TimeServer().build(port);
-        } catch (InterruptedException e) {            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
     }
 
@@ -51,6 +54,8 @@ class ChildChannelHandler extends ChannelInitializer<SocketChannel> {
 
     @Override
     protected void initChannel(SocketChannel socketChannel) throws Exception {
+        socketChannel.pipeline().addLast(new LineBasedFrameDecoder(1024));
+        socketChannel.pipeline().addLast(new StringDecoder());
         socketChannel.pipeline().addLast(new TimeServerHandler());
     }
 }
@@ -58,16 +63,21 @@ class ChildChannelHandler extends ChannelInitializer<SocketChannel> {
 
 @Slf4j
 class TimeServerHandler extends ChannelHandlerAdapter {
+    private int count;
 
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws UnsupportedEncodingException {
-        ByteBuf buf = (ByteBuf) msg;
-        byte[] req = new byte[buf.readableBytes()];
-        buf.readBytes(req);
-        String body = new String(req, "UTF-8");
-        log.info("The time server receive order :  {}", body);
-        String currentTime = "QUERY TIME ORDER".equals(body) ? new Date(System.currentTimeMillis()).toString() : "BAD ORDER";
 
+        // 用下面这些代码会报错：主机中已关闭一个连接？why
+//        ByteBuf buf = (ByteBuf) msg;
+//        byte[] req = new byte[buf.readableBytes()];
+//        buf.readBytes(req);
+//        String body = new String(req, "UTF-8");
+
+        String body = (String)msg;
+        log.info("The time server receive order :  {}, count {}", body, ++count);
+        String currentTime = "QUERY TIME ORDER".equals(body) ? new Date(System.currentTimeMillis()).toString() : "BAD ORDER";
+        currentTime += System.getProperty("line.separator");
         ByteBuf resp = Unpooled.copiedBuffer(currentTime.getBytes());
         ctx.write(resp);
     }
