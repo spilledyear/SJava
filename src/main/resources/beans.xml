@@ -8,22 +8,22 @@
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd">
 
     <!-- 自动扫描包 -->
-    <context:component-scan base-package="com.hand.sxy"></context:component-scan>
+    <context:component-scan base-package="com.zto.sxy"></context:component-scan>
 
     <!-- 启动 @Aspectj 的自动代理支持 -->
     <aop:aspectj-autoproxy></aop:aspectj-autoproxy>
     <!--<aop:config expose-proxy="true">-->
-        <!--<aop:pointcut id="xxx" expression="execution(* com.hand.sxy.*(..))"/>-->
-        <!--<aop:aspect ref="logaspect">-->
-            <!--<aop:before method="tttttt" pointcut-ref="xxx"></aop:before>-->
-            <!--<aop:after method="tttttt" pointcut-ref="xxx"></aop:after>-->
-            <!--<aop:around method="tttttt" pointcut-ref="xxx"></aop:around>-->
-            <!--&lt;!&ndash; 还有各种通知 &ndash;&gt;-->
-        <!--</aop:aspect>-->
+    <!--<aop:pointcut id="xxx" expression="execution(* com.hand.sxy.*(..))"/>-->
+    <!--<aop:aspect ref="logaspect">-->
+    <!--<aop:before method="tttttt" pointcut-ref="xxx"></aop:before>-->
+    <!--<aop:after method="tttttt" pointcut-ref="xxx"></aop:after>-->
+    <!--<aop:around method="tttttt" pointcut-ref="xxx"></aop:around>-->
+    <!--&lt;!&ndash; 还有各种通知 &ndash;&gt;-->
+    <!--</aop:aspect>-->
     <!--</aop:config>-->
 
     <beans>
-        <bean id="arithmeticCalculatorImpl" class="com.hand.sxy.aop.ArithmeticCalculatorImpl"/>
+        <bean id="arithmeticCalculatorImpl" class="com.zto.sxy.aop.ArithmeticCalculatorImpl"/>
     </beans>
 
 </beans>
