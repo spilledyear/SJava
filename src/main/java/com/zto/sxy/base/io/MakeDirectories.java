@@ -1,4 +1,4 @@
-package com.zto.sxy.io;
+package com.zto.sxy.base.io;
 //: io/MakeDirectories.java
 // Demonstrates the use of the File class to
 // create directories and manipulate files.

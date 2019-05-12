@@ -1,4 +1,4 @@
-package com.zto.sxy.io;
+package com.zto.sxy.base.io;
 
 import java.io.ByteArrayInputStream;
 import java.io.DataInputStream;

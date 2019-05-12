@@ -1,4 +1,4 @@
-package com.zto.sxy.aop;
+package com.zto.sxy.spring.aop2;
 
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
@@ -19,11 +19,11 @@ import org.springframework.stereotype.Component;
  * com.springsource.org.aspectj.weaver-1.6.8.RELEASE.jar
  * spring-aspects-4.0.0.RELEASE.jar
  *
- * 2. 在 Spring 的配置文件中加入 aop 的命名空间。
+ * 2. 在 Spring 的配置文件中加入 aop2 的命名空间。
  *
  * 3. 基于注解的方式来使用 AOP
- * 3.1 在配置文件中配置自动扫描的包: <context:component-scan base-package="com.xt.beans.aop"></context:component-scan>
- * 3.2 加入使 AspjectJ 注解起作用的配置: <aop:aspectj-autoproxy></aop:aspectj-autoproxy>
+ * 3.1 在配置文件中配置自动扫描的包: <context:component-scan base-package="com.xt.beans.aop2"></context:component-scan>
+ * 3.2 加入使 AspjectJ 注解起作用的配置: <aop2:aspectj-autoproxy></aop2:aspectj-autoproxy>
  * 为匹配的类自动生成动态代理对象.
  *
  * 4. 编写切面类:
@@ -34,7 +34,7 @@ import org.springframework.stereotype.Component;
  * 5.1 切面必须是 IOC 中的 bean: 实际添加了 @Component 注解
  * 5.2 声明是一个切面: 添加 @Aspect
  * 5.3 声明通知: 即额外加入功能对应的方法.
- * 5.3.1 前置通知: @Before("execution(public int com.xt.beans.aop.ArithmeticCalculator.*(int, int))")
+ * 5.3.1 前置通知: @Before("execution(public int com.xt.beans.aop2.ArithmeticCalculator.*(int, int))")
  * @Before 表示在目标方法执行之前执行 @Before 标记的方法的方法体.
  * @Before 里面的是切入点表达式:
  *
@@ -57,7 +57,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class LoggingAspect {
 
-	@Before("execution(public int com.zto.sxy.aop.ArithmeticCalculator.*(int, int))")
+	@Before("execution(public int com.zto.sxy.spring.aop2.ArithmeticCalculator.*(int, int))")
 	public void beforMethod(JoinPoint joinPoint){
 		System.out.println("当前执行的方法："+joinPoint.getSignature().getName()
 				+"，执行参数："+Arrays.toString(joinPoint.getArgs()));

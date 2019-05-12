@@ -1,4 +1,4 @@
-package com.zto.sxy.aop;
+package com.zto.sxy.spring.aop2;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;

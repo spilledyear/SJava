@@ -1,4 +1,4 @@
-package com.zto.sxy.aop;
+package com.zto.sxy.spring.aop2;
 
 public interface ArithmeticCalculator {
 

@@ -1,4 +1,4 @@
-package com.zto.sxy.nio;
+package com.zto.sxy.base.nio;
 
 import java.io.FileInputStream;
 import java.io.IOException;
