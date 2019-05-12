@@ -1,4 +1,4 @@
-package com.zto.sxy.qf.validate;
+package com.zto.sxy.validate;
 
 import org.apache.commons.pool2.impl.GenericObjectPoolConfig;
 import redis.clients.jedis.HostAndPort;

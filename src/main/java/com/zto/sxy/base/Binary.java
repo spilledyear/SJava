@@ -2,11 +2,11 @@ package com.zto.sxy.base;
 
 /**
  * Created by brian on 16/11/10.
- *
+ * <p>
  * TODO 补码/反码相关知识
  * https://www.cnblogs.com/zhangziqiu/archive/2011/03/30/ComputerCode.html
  * http://weihe6666.iteye.com/blog/1190033
- *
+ * <p>
  * 在计算机中，负数以原码的补码形式表达。
  */
 public class Binary {
@@ -15,7 +15,7 @@ public class Binary {
         int j = 10;
         System.out.println(i + ~j);
 
-        int[] arr = new int[] {3, -2};
+        int[] arr = new int[]{3, -2};
         for (int a : arr) {
             //原数
             System.out.println("a:" + a + "  二进制:" + Integer.toBinaryString(a));

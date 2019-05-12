@@ -1,12 +1,14 @@
-package com.zto.sxy.reactor;
+package com.zto.sxy.reactive.reactor;
 
 import org.junit.jupiter.api.Test;
 import reactor.core.publisher.Flux;
+import reactor.core.publisher.FluxSink;
 import reactor.core.publisher.Mono;
 
 import java.time.Duration;
 import java.util.Arrays;
 import java.util.List;
+import java.util.function.Consumer;
 
 /**
  * @author spilledyear
@@ -27,18 +29,23 @@ public class ReactorSnippets {
     );
 
 
-    public static void main(String[] args) {
+    @Test
+    public void easy() {
+        Flux.create(new Consumer<FluxSink<String>>() {
+            @Override
+            public void accept(FluxSink<String> fluxSink) {
+                fluxSink.next("发送数据耶");
+            }
+        }).subscribe(System.out::println);
     }
 
     @Test
     public void simpleCreation() {
         Flux<String> fewWords = Flux.just("Hello", "World");
+        fewWords.map(v -> v.toUpperCase()).
+                subscribe(System.out::println);
+
         Flux<String> manyWords = Flux.fromIterable(words);
-
-        fewWords.subscribe(System.out::println);
-
-        System.out.println();
-
         manyWords.subscribe(System.out::println);
     }
 

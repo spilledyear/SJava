@@ -2,9 +2,9 @@ package com.zto.sxy.base.datatype;
 
 /**
  * Created by Brian on 2016/4/14.
- *
+ * <p>
  * TODO 有些细节待理解
- *
+ * <p>
  * 主要是考装箱和拆箱
  */
 public class Boxing {
@@ -27,14 +27,18 @@ public class Boxing {
     }
 }
 
-/*
-输出：               原因:
-true                自动装箱,缓存
-false               自动装箱,未缓存
-true
-true                调用 equals(),比较的是值,而不是对象地址
-true
-false
-false               比较的是对象地址
 
+/**
+ * 对象常量池 cache from -128 to 127
+ * <p>
+ * true                自动装箱,缓存
+ * false               自动装箱,未缓存
+ * true
+ * true                调用 equals(),比较的是值,而不是对象地址
+ * true
+ * false
+ * false               比较的是对象地址
  */
+
+
+

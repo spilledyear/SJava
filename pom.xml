@@ -137,14 +137,15 @@
         <dependency>
             <groupId>io.netty</groupId>
             <artifactId>netty-all</artifactId>
-            <version>5.0.0.Alpha1</version>
+            <version>4.1.36.Final</version>
         </dependency>
+
 
         <!-- lombok -->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.18.4</version>
+            <version>1.18.8</version>
             <scope>provided</scope>
         </dependency>
 
@@ -152,14 +153,15 @@
         <dependency>
             <groupId>com.alibaba.csp</groupId>
             <artifactId>sentinel-transport-simple-http</artifactId>
-            <version>1.4.0-SNAPSHOT</version>
+            <version>1.6.0</version>
         </dependency>
+
 
         <!-- https://mvnrepository.com/artifact/io.projectreactor/reactor-core -->
         <dependency>
             <groupId>io.projectreactor</groupId>
             <artifactId>reactor-core</artifactId>
-            <version>3.2.2.RELEASE</version>
+            <version>3.2.5.RELEASE</version>
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/io.reactivex.rxjava2/rxjava -->
@@ -192,6 +194,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.0</version>
                 <configuration>
                     <debug>false</debug>
                     <source>11</source>

@@ -1,4 +1,4 @@
-package com.zto.sxy.qf.validate;
+package com.zto.sxy.validate;
 
 import java.lang.reflect.Field;
 import java.sql.*;

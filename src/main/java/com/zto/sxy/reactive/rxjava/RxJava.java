@@ -1,4 +1,4 @@
-package com.zto.sxy.rxjava;
+package com.zto.sxy.reactive.rxjava;
 
 import io.reactivex.*;
 import io.reactivex.disposables.Disposable;

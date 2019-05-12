@@ -4,13 +4,13 @@ import java.lang.reflect.Field;
 
 /**
  * Created by brian on 16/11/1.
- *
+ * <p>
  * 涉及到的知识点:
  * 1.java 的参数传递都是值传递
  * 2.Integer的内部实现(value,缓存,等等)
  * 3.反射操作(可访问性)
  * 4.自动装箱和拆箱
- *
+ * <p>
  * 参考博客 http://www.voidcn.com/blog/zgwangbo/article/p-6101689.html
  */
 public class IntegerChanger {

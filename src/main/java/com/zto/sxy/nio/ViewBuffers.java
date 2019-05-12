@@ -10,15 +10,14 @@ import java.nio.ShortBuffer;
 
 /**
  * Created by brian on 16/11/29.
- *
+ * <p>
  * 通过在同一个 ByteBuffer 上建立不同的试图缓冲器,
  * 将同一字节序列翻译成short,int,float,long,double等类型的数据
  */
 
 public class ViewBuffers {
     public static void main(String[] args) {
-        ByteBuffer bb = ByteBuffer.wrap(
-                new byte[] {0, 0, 0, 0, 0, 0, 0, 'a'});
+        ByteBuffer bb = ByteBuffer.wrap(new byte[]{0, 0, 0, 0, 0, 0, 0, 'a'});
         bb.rewind();
         System.out.print("Byte Buffer ");
         while (bb.hasRemaining())

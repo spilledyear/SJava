@@ -1,8 +1,8 @@
-package com.zto.sxy.sort;
+package com.zto.sxy.base;
 
-public class TestSort {
+public class SortingAlgorithm {
     public static void main(String[] args) {
-        TestSort testSort = new TestSort();
+        SortingAlgorithm testSort = new SortingAlgorithm();
     }
 
 
@@ -131,6 +131,5 @@ public class TestSort {
         //返回的是枢轴的位置
         return low;
     }
-
 
 }

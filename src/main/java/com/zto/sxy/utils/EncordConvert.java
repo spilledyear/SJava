@@ -57,7 +57,7 @@ public class EncordConvert {
             File createDir = null;
             //定义另存目录中的文件对象
             File createFile = null;
-            //如果当前file对象是一个目录，再调用此方法，递归。
+
             if (file.isDirectory()) {
                 //获取此目录绝对路径
                 String path = file.getAbsolutePath();

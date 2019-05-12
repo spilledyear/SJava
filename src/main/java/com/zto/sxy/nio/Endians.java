@@ -6,10 +6,10 @@ import java.util.Arrays;
 
 /**
  * Created by brian on 16/11/29.
- *
+ * <p>
  * "big endian"(高位优先),将最重要的字节放在地址最低的存储器单元;
  * "little endian"(低位优先),将最重要的字节放在地址最高的存储器单元;
- *
+ * <p>
  * ByteBuffer 是以高位优先的形式存储数据的。
  */
 public class Endians {
