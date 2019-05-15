@@ -2,11 +2,13 @@ package com.zto.sxy.reactive.rxjava;
 
 import io.reactivex.*;
 import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.reactivestreams.Subscriber;
 import org.reactivestreams.Subscription;
 
+import static io.reactivex.BackpressureStrategy.BUFFER;
 import static io.reactivex.BackpressureStrategy.DROP;
 
 /**
@@ -128,5 +130,48 @@ public class RxJava {
         Flowable.create(emitter -> emitter.onNext("onNext 1"), DROP)
                 .map(v -> v + " MAP")
                 .subscribe(System.out::println);
+    }
+
+
+    /**
+     * 线程切换
+     */
+    @Test
+    public void test05() throws InterruptedException {
+        Flowable.create(emitter -> {
+            log.info("发射数据的线程 => {}", Thread.currentThread().getName());
+            emitter.onNext("DD");
+        }, BUFFER)
+
+                // 指定在哪个线程上发射数据
+                .subscribeOn(Schedulers.io())
+
+                // 指定接收数据后在哪个线程上执行
+                .observeOn(Schedulers.newThread())
+
+                .subscribe(new Subscriber<Object>() {
+                               @Override
+                               public void onSubscribe(Subscription subscription) {
+                                   log.info("onSubscribe  Thread => {}", Thread.currentThread().getName());
+                               }
+
+                               @Override
+                               public void onNext(Object s) {
+                                   log.info("onNext  Data => {},  Thread => {}", s, Thread.currentThread().getName());
+                               }
+
+                               @Override
+                               public void onError(Throwable throwable) {
+                                   log.info("onError  Thread => {}", Thread.currentThread().getName());
+                               }
+
+                               @Override
+                               public void onComplete() {
+                                   log.info("onComplete  Thread => {}", Thread.currentThread().getName());
+                               }
+                           }
+                );
+
+        Thread.sleep(3000);
     }
 }
