@@ -1,6 +1,5 @@
 package com.zto.sxy.java8.effective.optional;
 
-import com.google.common.collect.Lists;
 import org.junit.Test;
 
 import java.util.*;

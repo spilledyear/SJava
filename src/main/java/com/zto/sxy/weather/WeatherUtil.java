@@ -1,7 +1,7 @@
 package com.zto.sxy.weather;
 
 import com.alibaba.fastjson.JSONObject;
-import org.springframework.util.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 
 import java.util.ArrayList;
 import java.util.Arrays;

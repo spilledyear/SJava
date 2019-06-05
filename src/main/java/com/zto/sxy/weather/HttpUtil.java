@@ -1,7 +1,5 @@
 package com.zto.sxy.weather;
 
-import org.springframework.util.CollectionUtils;
-
 import java.io.IOException;
 import java.net.URI;
 import java.net.http.HttpClient;
@@ -47,7 +45,7 @@ public class HttpUtil {
         try {
             HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
             List<String> list = response.headers().allValues("location");
-            if (!CollectionUtils.isEmpty(list)) {
+            if (list != null && !list.isEmpty()) {
                 JSONUtil.putMappingCode(city, list.get(0));
             }
             return response.body();
