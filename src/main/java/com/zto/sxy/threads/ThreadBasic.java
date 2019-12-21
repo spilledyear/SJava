@@ -3,6 +3,7 @@ package com.zto.sxy.threads;
 import java.time.LocalDateTime;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.FutureTask;
+import java.util.concurrent.TimeUnit;
 import java.util.function.Consumer;
 
 public class ThreadBasic {
@@ -10,8 +11,9 @@ public class ThreadBasic {
 
     private static volatile boolean finished = false;
 
-    public static void main(String[] args) throws InterruptedException {
-        test01();
+    public static void main(String[] args) throws Exception {
+//        test01();
+        testFutureTask();
     }
 
 
@@ -93,11 +95,20 @@ public class ThreadBasic {
 
     private static void testFutureTask() throws ExecutionException, InterruptedException {
         FutureTask<String> future = new FutureTask<>(() -> {
-            Thread.sleep(3000);
+            try {
+                Thread.sleep(5000);
+            } catch (Exception e) {
+                System.out.println("interrupt hehehe");
+                e.printStackTrace();
+            }
             System.out.println(System.currentTimeMillis());
             return "hehehh";
         });
-        new Thread(future).start();
+        Thread t1 = new Thread(future);
+        t1.start();
+
+        TimeUnit.SECONDS.sleep(1);
+        t1.interrupt();
         System.out.println("Start Get Result : " + System.currentTimeMillis());
         System.out.println("Get Result : " + future.get() + System.currentTimeMillis());
     }
